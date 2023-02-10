@@ -94,7 +94,6 @@ namespace Calculator
             {
                 resultLabel.Content = "0";
             }
-
             if (sender == multiplicationButton)
                 selectedOperator = SelectedOperator.Multiplication;
             if (sender == divisionButton)
@@ -102,9 +101,7 @@ namespace Calculator
             if (sender == plusButton)
                 selectedOperator = SelectedOperator.Addition;
             if (sender == minusButton)
-                selectedOperator = SelectedOperator.Substraction;
-
-                        
+                selectedOperator = SelectedOperator.Substraction;                        
         }
 
         private void acButton_Click(object sender, RoutedEventArgs e)
