@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CSharpPractice.sln
+namespace CSharpPractice
 {
     internal class Program
     {
@@ -9,16 +9,7 @@ namespace CSharpPractice.sln
         static void Main(string[] args)
         {
 
-            if(numberTwo == 1)
-            {
-                var numberThree = 12f;
-            }
-            int numberOne = 23;
-            Console.WriteLine($"{numberOne}");
-            Console.WriteLine($"{numberTwo}");
-            var message = Console.ReadLine();
-            Console.WriteLine(SimpleMath.Add(numberOne, numberTwo));
-            Console.ReadLine();
+            BankAccount.
         }
     }
 

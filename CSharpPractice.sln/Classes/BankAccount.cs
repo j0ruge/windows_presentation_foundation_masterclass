@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSharpPractice.sln.Classes
+namespace CSharpPractice.Classes
 {
     public  class BankAccount
     {
