@@ -1,15 +1,26 @@
 ﻿using System;
+using CSharpPractice.Classes;
 
 namespace CSharpPractice
 {
     internal class Program
     {
-        static double numberTwo = 12.34;
+        static double numberTwo = 100;
 
         static void Main(string[] args)
         {
 
-            BankAccount.
+            BankAccount bankAccount = new BankAccount();
+            bankAccount.AddToBalance(numberTwo);
+
+            Console.WriteLine(bankAccount.Balance);
+
+            ChildBankAccount childBankAccount = new ChildBankAccount();
+
+            childBankAccount.AddToBalance(numberTwo);
+            Console.WriteLine(childBankAccount.Balance);
+
+            Console.ReadLine();
         }
     }
 
