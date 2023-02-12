@@ -1,5 +1,7 @@
 ﻿using System;
 using CSharpPractice.Classes;
+using CSharpPractice.Interface;
+using Microsoft.VisualBasic;
 
 namespace CSharpPractice
 {
@@ -9,27 +11,25 @@ namespace CSharpPractice
 
         static void Main(string[] args)
         {
-
-
-            double[] numbers = { 1, 2, 3, 43, 42154};
-            double mathResult = SimpleMath.Add(numbers);
-
             BankAccount bankAccount = new BankAccount(1000);
             bankAccount.AddToBalance(numberTwo);
 
-            Console.WriteLine(bankAccount.Balance);
-            Console.WriteLine(mathResult);
+            SimpleMath simpleMath = new SimpleMath();
 
-            ChildBankAccount childBankAccount = new ChildBankAccount();
+            Console.WriteLine(Information(bankAccount));
+            Console.WriteLine(Information(simpleMath));
 
-            childBankAccount.AddToBalance(numberTwo);
-            Console.WriteLine(childBankAccount.Balance);
 
             Console.ReadLine();
         }
+
+        private static string Information(IInformation information)
+        {
+            return information.GetInformation();
+        }
     }
 
-    class SimpleMath
+    class SimpleMath: IInformation
     {
         public static double Add(double n1, double n2)
         {
@@ -46,5 +46,9 @@ namespace CSharpPractice
             return result;
         }
 
+        public string GetInformation()
+        {
+            return "Class that solves simple math.";
+        }
     }
 }

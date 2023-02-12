@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSharpPractice.Interface;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CSharpPractice.Classes
 {
-    public  class BankAccount
+    public  class BankAccount: IInformation
     {
         private double balance;
         public double Balance
@@ -35,10 +36,15 @@ namespace CSharpPractice.Classes
             Balance= initialBalance;
         }
 
-        public double AddToBalance(double balanceToBeAdded)
+        public virtual double AddToBalance(double balanceToBeAdded)
         {
             Balance += balanceToBeAdded;
             return Balance;
+        }
+
+        public string GetInformation()
+        {
+            return $"Your current balance is: {Balance:c}";
         }
     }
     
@@ -47,6 +53,15 @@ namespace CSharpPractice.Classes
         public ChildBankAccount()
         {
             Balance = 10;
+        }
+
+        public override double AddToBalance(double balanceToBeAdded)
+        {
+            if (balanceToBeAdded > 1000)
+                balanceToBeAdded = 1000;
+            if (balanceToBeAdded < -1000)
+                balanceToBeAdded = -1000;
+            return base.AddToBalance(balanceToBeAdded);
         }
     }
 
