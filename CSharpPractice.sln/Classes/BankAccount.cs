@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +28,11 @@ namespace CSharpPractice.Classes
         public BankAccount()
         {
             Balance = 100;
+        }
+
+        public BankAccount(double initialBalance)
+        {
+            Balance= initialBalance;
         }
 
         public double AddToBalance(double balanceToBeAdded)

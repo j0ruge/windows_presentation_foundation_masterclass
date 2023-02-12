@@ -10,10 +10,15 @@ namespace CSharpPractice
         static void Main(string[] args)
         {
 
-            BankAccount bankAccount = new BankAccount();
+
+            double[] numbers = { 1, 2, 3, 43, 42154};
+            double mathResult = SimpleMath.Add(numbers);
+
+            BankAccount bankAccount = new BankAccount(1000);
             bankAccount.AddToBalance(numberTwo);
 
             Console.WriteLine(bankAccount.Balance);
+            Console.WriteLine(mathResult);
 
             ChildBankAccount childBankAccount = new ChildBankAccount();
 
@@ -30,5 +35,16 @@ namespace CSharpPractice
         {
             return n1 + n2;
         }
+
+        public static double Add(double[] numbers)
+        {
+            double result = 0;
+            foreach(double d in numbers)
+            {
+                result += d;
+            }
+            return result;
+        }
+
     }
 }
