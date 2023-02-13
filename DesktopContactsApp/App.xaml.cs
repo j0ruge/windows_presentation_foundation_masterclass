@@ -13,5 +13,9 @@ namespace DesktopContactsApp
     /// </summary>
     public partial class App : Application
     {
+        static string databaseName = "Contacts.db";
+        static string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        static public string databasePath = System.IO.Path.Combine(folderPath, databaseName);
+
     }
 }
