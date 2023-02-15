@@ -1,4 +1,5 @@
 ﻿using DesktopContactsApp.Classes;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,16 +27,34 @@ namespace DesktopContactsApp
         {
             InitializeComponent();
             this.contact = contact;
+            nameTextBox.Text = contact.Name;
+            emailTextBox.Text = contact.Email;
+            phoneTextBox.Text = contact.Phone;
         }
 
         private void updateButton_Click(object sender, RoutedEventArgs e)
         {
 
+            contact.Name = nameTextBox.Text;
+            contact.Email = emailTextBox.Text;
+            contact.Phone = phoneTextBox.Text;
+
+            using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
+            {
+                connection.CreateTable<Contacts>();
+                connection.Update(contact);
+            }
+            Close();
         }
 
         private void deleteButton_Click(object sender, RoutedEventArgs e)
         {
-
+            using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
+            {
+                connection.CreateTable<Contacts>();
+                connection.Delete(contact);
+            }
+            Close();
         }
     }
 }

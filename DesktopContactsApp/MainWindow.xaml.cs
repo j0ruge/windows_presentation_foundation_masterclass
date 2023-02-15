@@ -54,15 +54,19 @@ namespace DesktopContactsApp
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox searchTextBox = sender as TextBox;
-            var filteredList = contacts.Where(contact => contact.Name.ToLower().Contains(searchTextBox.Text.ToLower())).ToList();
-
-            
-
-            contactsListView.ItemsSource = filteredList2;
+            var filteredList = contacts.Where(contact => contact.Name.ToLower().Contains(searchTextBox.Text.ToLower())).ToList();          
+            contactsListView.ItemsSource = filteredList;
         }
 
         private void contactsListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            Contacts selectedContact = (Contacts)contactsListView.SelectedItem;
+            if (selectedContact != null)
+            {
+                ContactDetaisWindow contactDetaisWindow = new ContactDetaisWindow(selectedContact);
+                contactDetaisWindow.ShowDialog();
+                ReadDatabase();
+            }
 
         }
     }
