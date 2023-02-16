@@ -6,20 +6,20 @@
              xmlns:local="clr-namespace:DesktopContactsApp.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="90" d:DesignWidth="300">
-    <Grid Background="AAE5E5E5">
+    <Grid Background="#AAE5E5E5">
         <StackPanel Margin="5">
             <TextBlock x:Name="nameTextBlock"
                        Text="GabirU Felpudo"
-                                   FontSize="20"
-                                   FontWeight="Bold"/>
+                       FontSize="20"
+                       FontWeight="Bold"/>
             <TextBlock x:Name="emailTextBlock"
-                Text="pulante@gabiru.com"
-                                   FontSize="15"
-                                   Foreground="DodgerBlue"/>
+                       Text="pulante@gabiru.com"
+                       FontSize="15"
+                       Foreground="DodgerBlue"/>
             <TextBlock x:Name="phoneTextBlock"
-                Text="21 090090987"
-                                   FontSize="15"
-                                   FontStyle="Italic"/>
+                       Text="21 090090987"
+                       FontSize="15"
+                       FontStyle="Italic"/>
         </StackPanel>
     </Grid>
 </UserControl>
