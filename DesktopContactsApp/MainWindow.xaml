@@ -11,6 +11,7 @@
         <Button Content="New contact"
                 Click="Button_Click"
                 />
+        <TextBlock Text="Filtro por Nome"/>
         <TextBox Margin="0 5 0 5"
                  TextChanged="TextBox_TextChanged"
                 />
@@ -19,6 +20,11 @@
                   Height="280"
                   Margin="0,5,0,0"
                   >
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <uc:ContactControl Contacts="{Binding}"/>
