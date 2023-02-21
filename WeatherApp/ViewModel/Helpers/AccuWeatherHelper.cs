@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using WeatherApp.Model;
@@ -15,13 +18,37 @@ namespace WeatherApp.ViewModel.Helpers
         public const string API_KEY = "yBCnILwTWk3G96kersZjc7xWHPdL8smG";
 
 
-        public static List<City> GetCities(string query)
+        public static async Task<List<City>> GetCities(string query)
         {
-            List<City> cities = new List<City>();
+            List<City> cities = new List<City>();            
+            string apiUrl = BASE_URL + string.Format(AUTOCOMPLETE_ENDPOINT, API_KEY, query);
 
-            //TODO: Implementar o código de acesso a API
+            using(HttpClient client = new HttpClient())
+            {
+                var response = await client.GetAsync(apiUrl);
+                string responseJsonRawData = await response.Content.ReadAsStringAsync();
+
+                cities = JsonConvert.DeserializeObject<List<City>>(responseJsonRawData);
+            }
 
             return cities;
+        }
+
+        public static async Task<CurrentConditions> GetCurrentConditions(string cityKey)
+        {
+            CurrentConditions currentConditions = new CurrentConditions();
+
+            string apiUrl = BASE_URL + string.Format(CURRENT_CONDITIONS_ENDPOINT, cityKey, API_KEY);
+
+            using (HttpClient client = new HttpClient())
+            {
+                var response = await client.GetAsync(apiUrl);
+                string responseJsonRawData = await response.Content.ReadAsStringAsync();
+
+                currentConditions = (JsonConvert.DeserializeObject<List<CurrentConditions>>(responseJsonRawData)).FirstOrDefault();
+            }
+
+            return currentConditions;
         }
     }
 }
