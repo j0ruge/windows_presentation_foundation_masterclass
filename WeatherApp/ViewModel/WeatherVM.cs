@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WeatherApp.Model;
 
 namespace WeatherApp.ViewModel
 {
@@ -19,6 +20,50 @@ namespace WeatherApp.ViewModel
                 query = value;
                 OnPropertyChanged("Query");
             }
+        }
+
+        private CurrentConditions currentContitions;
+
+        public CurrentConditions CurrentContitions
+        {
+            get { return currentContitions;  }
+            set {
+                currentContitions = value;
+                OnPropertyChanged("CurrentContitions");
+            }
+        }
+
+        private City selectedCity;
+
+        public City SelectedCity
+        {
+            get { return selectedCity; }
+            set { 
+                selectedCity = value;
+                OnPropertyChanged("SelectedCity");
+            }
+        }
+
+        public WeatherVM()
+        {
+            if(DesignerProperties.GetIsInDesignMode(new System.Windows.DependencyObject()))
+            {
+                SelectedCity = new City
+                {
+                    LocalizedName = "Rio de Janeiro",
+                };
+                CurrentContitions = new CurrentConditions
+                {
+                    WeatherText = "Partly cloudy",
+                    Temperature = new Temperature
+                    {
+                        Metric = new Units
+                        {
+                            Value = 21
+                        }
+                    }
+                };
+            }            
         }
 
 
