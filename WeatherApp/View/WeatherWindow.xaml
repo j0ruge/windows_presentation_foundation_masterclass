@@ -29,7 +29,8 @@
                 </TextBox.Resources>
                 
             </TextBox>
-            <Button Margin="0, 10"
+            <Button Command="{Binding SearchCommand}"
+                    Margin="0, 10"
                     Content="Search"
                     Height="30"
                     FontSize="16"
