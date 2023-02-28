@@ -73,9 +73,9 @@ namespace WeatherApp.ViewModel
         }
 
 
-        public void MakeQuery()
+        public async void MakeQuery()
         {
-            var cities = AccuWeatherHelper.GetCities(Query);
+            var cities = await AccuWeatherHelper.GetCities(Query);
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
