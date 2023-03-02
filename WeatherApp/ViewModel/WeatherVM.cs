@@ -21,20 +21,20 @@ namespace WeatherApp.ViewModel
             get { return query; }
             set { 
                 query = value;
-                OnPropertyChanged("Query");
+                OnPropertyChanged(nameof(Query));
             }
         }
 
         public ObservableCollection<City> Cities { get; set; }
 
-        private CurrentConditions currentContitions;
+        private CurrentConditions currentConditions;
 
-        public CurrentConditions CurrentContitions
+        public CurrentConditions CurrentConditions
         {
-            get { return currentContitions;  }
+            get { return currentConditions;  }
             set {
-                currentContitions = value;
-                OnPropertyChanged("CurrentContitions");
+                currentConditions = value;
+                OnPropertyChanged("CurrentConditions");
             }
         }
 
@@ -45,7 +45,11 @@ namespace WeatherApp.ViewModel
             get { return selectedCity; }
             set { 
                 selectedCity = value;
-                OnPropertyChanged("SelectedCity");
+                if(selectedCity != null)
+                {
+                    OnPropertyChanged("SelectedCity");
+                    GetCurrentConditions();
+                }                
             }
         }
 
@@ -59,21 +63,29 @@ namespace WeatherApp.ViewModel
                 {
                     LocalizedName = "Rio de Janeiro",
                 };
-                CurrentContitions = new CurrentConditions
+                CurrentConditions = new CurrentConditions
                 {
                     WeatherText = "Partly cloudy",
                     Temperature = new Temperature
                     {
                         Metric = new Units
                         {
-                            Value = 21
+                            Value = "21"
                         }
-                    }
+                    },
+                    //HasPrecipitation = false
                 };
             }
 
             SearchCommand = new SearchCommand(this);
             Cities = new ObservableCollection<City>();
+        }
+
+        public async void GetCurrentConditions()
+        {
+            Query = string.Empty;            
+            CurrentConditions = await AccuWeatherHelper.GetCurrentConditions(SelectedCity.Key);
+            Cities.Clear();
         }
 
 
