@@ -5,8 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EvernoteClone.View"
         mc:Ignorable="d"
-        Title="NotesWindows" Height="450" Width="800">
+        Title="NotesWindows" Height="300" Width="300">
     <Grid>
-        
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="File">
+                    <MenuItem Header="New notebook"/>
+                    <MenuItem Header="New note"/>
+                    <Separator/>
+                    <MenuItem Header="Exit"
+                              Click="MenuItem_Click"/>
+
+                </MenuItem>
+            </Menu>
+            <Grid>
+
+            </Grid>
+        </DockPanel>   
     </Grid>
 </Window>
