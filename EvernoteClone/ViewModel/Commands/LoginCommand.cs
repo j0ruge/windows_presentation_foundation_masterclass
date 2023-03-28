@@ -28,5 +28,12 @@ namespace EvernoteClone.ViewModel.Commands
         {
             //TODO: Login functionality
         }
+        
+        int CalculateDaysBetweenDates(DateTime start, DateTime end){
+            start = DateTime.Now;
+            end = DateTime.Now.AddDays(5);
+            return (end - start).Days;
+        }
+        
     }
 }
